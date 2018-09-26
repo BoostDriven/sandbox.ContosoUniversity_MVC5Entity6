@@ -7,10 +7,25 @@ using ContosoUniversity.Models;
 
 namespace ContosoUniversity.DAL
 {
-    public class SchoolInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<SchoolContext>
+    public class SchoolInitializer : System.Data.Entity.DropCreateDatabaseAlways<SchoolContext>
     {
         protected override void Seed(SchoolContext context)
         {
+            var instructors = new List<Instructor> {
+                new Instructor {LastName="Ted", FirstMidName="Catch", HireDate=DateTime.Parse("2002-09-01") },
+                new Instructor {LastName="Bundy", FirstMidName="Sarah", HireDate=DateTime.Parse("2002-09-01") },
+                new Instructor {LastName="Black", FirstMidName="Tom", HireDate=DateTime.Parse("2002-09-01") }
+            };
+            instructors.ForEach(i => context.Instructors.Add(i));
+            context.SaveChanges();
+
+            var departments = new List<Department>
+            {
+                new Department {Budget=2000, StartDate=DateTime.Parse("2002-09-01") }
+            };
+            departments.ForEach(i => context.Departmentes.Add(i));
+            context.SaveChanges();
+
             var students = new List<Student>
             {
             new Student{FirstMidName="Carson",LastName="Alexander",EnrollmentDate=DateTime.Parse("2005-09-01")},
@@ -27,13 +42,13 @@ namespace ContosoUniversity.DAL
             context.SaveChanges();
             var courses = new List<Course>
             {
-            new Course{CourseID=1050,Title="Chemistry",Credits=3,},
-            new Course{CourseID=4022,Title="Microeconomics",Credits=3,},
-            new Course{CourseID=4041,Title="Macroeconomics",Credits=3,},
-            new Course{CourseID=1045,Title="Calculus",Credits=4,},
-            new Course{CourseID=3141,Title="Trigonometry",Credits=4,},
-            new Course{CourseID=2021,Title="Composition",Credits=3,},
-            new Course{CourseID=2042,Title="Literature",Credits=4,}
+            new Course{CourseID=1050,Title="Chemistry",Credits=3,DepartmentID=1},
+            new Course{CourseID=4022,Title="Microeconomics",Credits=3,DepartmentID=1},
+            new Course{CourseID=4041,Title="Macroeconomics",Credits=3,DepartmentID=1},
+            new Course{CourseID=1045,Title="Calculus",Credits=4,DepartmentID=1},
+            new Course{CourseID=3141,Title="Trigonometry",Credits=4,DepartmentID=1},
+            new Course{CourseID=2021,Title="Composition",Credits=3,DepartmentID=1},
+            new Course{CourseID=2042,Title="Literature",Credits=4,DepartmentID=1}
             };
             courses.ForEach(s => context.Courses.Add(s));
             context.SaveChanges();

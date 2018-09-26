@@ -7,7 +7,8 @@ namespace ContosoUniversity.DAL
     public class SchoolContext : DbContext
     {
         public SchoolContext() : base("SchoolContext") {
-            Database.SetInitializer<SchoolContext>(new DropCreateDatabaseAlways<SchoolContext>());
+            //Database.SetInitializer<SchoolContext>(new DropCreateDatabaseAlways<SchoolContext>());
+            Database.SetInitializer(new SchoolInitializer());
         }
 
         public DbSet<Course> Courses { get; set; }
