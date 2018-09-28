@@ -21,7 +21,8 @@ namespace ContosoUniversity.DAL
 
             var departments = new List<Department>
             {
-                new Department {Budget=2000, StartDate=DateTime.Parse("2002-09-01") }
+                new Department {Budget=21000, StartDate=DateTime.Now },
+                new Department {Budget=65000, StartDate=DateTime.Now }
             };
             departments.ForEach(i => context.Departmentes.Add(i));
             context.SaveChanges();
@@ -54,13 +55,13 @@ namespace ContosoUniversity.DAL
             context.SaveChanges();
             var enrollments = new List<Enrollment>
             {
-            new Enrollment{StudentID=1,CourseID=1050,Grade=Grade.A},
-            new Enrollment{StudentID=1,CourseID=4022,Grade=Grade.C},
-            new Enrollment{StudentID=1,CourseID=4041,Grade=Grade.B},
-            new Enrollment{StudentID=2,CourseID=1045,Grade=Grade.B},
-            new Enrollment{StudentID=2,CourseID=3141,Grade=Grade.F},
-            new Enrollment{StudentID=2,CourseID=2021,Grade=Grade.F},
-            new Enrollment{StudentID=3,CourseID=1050},
+            new Enrollment{StudentID=8,CourseID=1050,Grade=Grade.A},
+            new Enrollment{StudentID=8,CourseID=4022,Grade=Grade.C},
+            new Enrollment{StudentID=8,CourseID=4041,Grade=Grade.B},
+            new Enrollment{StudentID=4,CourseID=1045,Grade=Grade.B},
+            new Enrollment{StudentID=4,CourseID=3141,Grade=Grade.F},
+            new Enrollment{StudentID=4,CourseID=2021,Grade=Grade.F},
+            new Enrollment{StudentID=4,CourseID=1050},
             new Enrollment{StudentID=4,CourseID=1050,},
             new Enrollment{StudentID=4,CourseID=4022,Grade=Grade.F},
             new Enrollment{StudentID=5,CourseID=4041,Grade=Grade.C},
